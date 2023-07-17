@@ -1,16 +1,14 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import { Inter } from 'next/font/google';
-import styles from '@/styles/Home.module.css';
+import homeStyles from '@/styles/Home.module.css';
 import Layout, { siteTitle } from '@/components/Layout';
 import utilStyles from '@/styles/utils.module.css';
 import Link from 'next/link';
-import homeStyles from '@/styles/home.module.css';
 import { getPostsData } from '@/lib/post';
 // SSGの場合
 export async function getStaticProps() {
   const allPostsData = getPostsData(); // id, title, thumbnail
-  console.log(allPostsData);
 
   return {
     props: {
@@ -21,7 +19,6 @@ export async function getStaticProps() {
 
 // SSRの場合
 // export async function getServerSideProps(context) {
-
 //   return {
 //     props: {
 //       // コンポーネントに渡すためのprops
@@ -46,11 +43,11 @@ export default function Home({ allPostsData }) {
       </section>
       <section className={utilStyles.headingMd}>
         <h3>エンジニアのブログ</h3>
-        <div className={styles.grid}>
+        <div className={homeStyles.grid}>
           {allPostsData.map(({ id, title, date, thumbnail }) => (
             <article key={id}>
               <Link href={`/posts/${id}`}>
-                <Image src={`${thumbnail}`} className={styles.thumbnailImage} width={100} height={100} alt={title} />
+                <Image src={`${thumbnail}`} className={homeStyles.thumbnailImage} width={100} height={100} alt={title} />
               </Link>
               <Link className={'utilStyle.boldText'} href={`/posts/${id}`}>
                 {title}
@@ -58,7 +55,6 @@ export default function Home({ allPostsData }) {
               <br />
               <small className={utilStyles.lightText}>{date}</small>
             </article>
-
           ))}
         </div>
       </section>
