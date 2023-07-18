@@ -28,6 +28,8 @@ export async function getStaticProps() {
 
 const inter = Inter({ subsets: ['latin'] });
 
+console.log({ siteTitle });
+
 export default function Home({ allPostsData }) {
   return (
     <Layout home>
