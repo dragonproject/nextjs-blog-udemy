@@ -1,34 +1,34 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from 'next/font/google';
-import homeStyles from '@/styles/Home.module.css';
-import Layout, { siteTitle } from '@/components/Layout';
-import utilStyles from '@/styles/utils.module.css';
-import Link from 'next/link';
-import { getPostsData } from '@/lib/post';
+import Head from 'next/head'
+import Image from 'next/image'
+import { Inter } from 'next/font/google'
+import homeStyles from '@/styles/Home.module.css'
+import Layout, { siteTitle } from '@/components/Layout'
+import utilStyles from '@/styles/utils.module.css'
+import Link from 'next/link'
+import { getPostsData } from '@/lib/post'
 // SSGの場合
 export async function getStaticProps() {
-  const allPostsData = getPostsData(); // id, title, thumbnail
+  const allPostsData = getPostsData() // id, title, thumbnail
 
   return {
     props: {
       allPostsData,
     },
-  };
+  }
 }
 
 // SSRの場合
 // export async function getServerSideProps(context) {
 //   return {
 //     props: {
-//       // コンポーネントに渡すためのprops
+// // コンポーネントに渡すためのprops
 //     },
 //   };
 // }
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'] })
 
-console.log({ siteTitle });
+console.log({ siteTitle })
 
 export default function Home({ allPostsData }) {
   return (
@@ -61,6 +61,6 @@ export default function Home({ allPostsData }) {
         </div>
       </section>
     </Layout>
-  );
+  )
 }
 
